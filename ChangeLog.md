@@ -1,5 +1,14 @@
 # CppJieba ChangeLog
 
+## v5.0.2
+
++ Upgrade [limonp](https://github.com/yanyiwu/limonp) -> v0.6.1
+
+## v5.0.1
+
++ Make Compiler Happier.
++ Add PHP, DLang Links.
+
 ## v5.0.0
 
 + Notice(**api changed**) : Jieba class 3 arguments -> 5 arguments, and use KeywordExtractor in Jieba
