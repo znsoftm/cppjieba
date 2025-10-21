@@ -1,54 +1,49 @@
-# CppJieba [English](README_EN.md)
+# CppJieba
 
-[![Build Status](https://travis-ci.org/yanyiwu/cppjieba.png?branch=master)](https://travis-ci.org/yanyiwu/cppjieba) 
+[![CMake](https://github.com/yanyiwu/cppjieba/actions/workflows/cmake.yml/badge.svg)](https://github.com/yanyiwu/cppjieba/actions/workflows/cmake.yml)
 [![Author](https://img.shields.io/badge/author-@yanyiwu-blue.svg?style=flat)](http://yanyiwu.com/) 
-[![Donate](https://img.shields.io/badge/donate-eos_git@yanyiwu-orange.svg)](https://eospark.com/account/gitatyanyiwu)
-[![Platform](https://img.shields.io/badge/platform-Linux,%20OS%20X,%20Windows-green.svg?style=flat)](https://github.com/yanyiwu/cppjieba)
+[![Platform](https://img.shields.io/badge/platform-Linux,macOS,Windows-green.svg?style=flat)](https://github.com/yanyiwu/cppjieba)
 [![Performance](https://img.shields.io/badge/performance-excellent-brightgreen.svg?style=flat)](http://yanyiwu.com/work/2015/06/14/jieba-series-performance-test.html) 
 [![Tag](https://img.shields.io/github/v/tag/yanyiwu/cppjieba.svg)](https://github.com/yanyiwu/cppjieba/releases)
-[![License](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat)](http://yanyiwu.mit-license.org)
-[![Build status](https://ci.appveyor.com/api/projects/status/wl30fjnm2rhft6ta/branch/master?svg=true)](https://ci.appveyor.com/project/yanyiwu/cppjieba/branch/master)
-
-
-[![logo](http://images.yanyiwu.com/CppJiebaLogo-v1.png)](https://github.com/yanyiwu/cppjieba)
 
 ## 简介
 
 CppJieba是"结巴(Jieba)"中文分词的C++版本
 
-## 特性
+### 主要特点
 
-+ 源代码都写进头文件`include/cppjieba/*.hpp`里，`include`即可使用。
-+ 支持`utf8`编码。
-+ 项目自带较为完善的单元测试，核心功能中文分词(utf8)的稳定性接受过线上环境检验。
-+ 支持载自定义用户词典，多路径时支持分隔符'|'或者';'分隔。
-+ 支持 `Linux` , `Mac OSX`, `Windows` 操作系统。
+- 🚀 高性能：经过线上环境验证的稳定性和性能表现
+- 📦 易集成：源代码以头文件形式提供 (`include/cppjieba/*.hpp`)，包含即可使用
+- 🔍 多种分词模式：支持精确模式、全模式、搜索引擎模式等
+- 📚 自定义词典：支持用户自定义词典，支持多词典路径（使用'|'或';'分隔）
+- 💻 跨平台：支持 Linux、macOS、Windows 操作系统
+- 🌈 UTF-8编码：原生支持 UTF-8 编码的中文处理
 
-## 用法
+## 快速开始
 
-### 依赖软件
+### 环境要求
 
-* `g++ (version >= 4.1 is recommended) or clang++`;
-* `cmake (version >= 2.6 is recommended)`;
+- C++ 编译器：
+  - g++ (推荐 4.1 以上版本)
+  - 或 clang++
+- cmake (推荐 2.6 以上版本)
 
-### 下载和编译
+### 安装步骤
 
 ```sh
-git clone --depth=10 --branch=master git://github.com/yanyiwu/cppjieba.git
+git clone https://github.com/yanyiwu/cppjieba.git
 cd cppjieba
+git submodule init
+git submodule update
 mkdir build
 cd build
 cmake ..
 make
-```
 
-有兴趣的可以跑跑测试(可选):
-
-```
 make test
 ```
 
-## Demo
+## 使用示例
 
 ```
 ./demo
@@ -80,7 +75,7 @@ make test
 [{"word": "CEO", "offset": [93], "weight": 11.7392}, {"word": "升职", "offset": [72], "weight": 10.8562}, {"word": "加薪", "offset": [78], "weight": 10.6426}, {"word": "手扶拖拉机", "offset": [21], "weight": 10.0089}, {"word": "巅峰", "offset": [111], "weight": 9.49396}]
 ```
 
-详细请看 `test/demo.cpp`.
+For more details, please see [demo](https://github.com/yanyiwu/cppjieba-demo).
 
 ### 分词结果示例
 
@@ -186,7 +181,7 @@ Query方法先使用Mix方法切词，对于切出来的较长的词再使用Ful
 ["CEO:11.7392", "升职:10.8562", "加薪:10.6426", "手扶拖拉机:10.0089", "巅峰:9.49396"]
 ```
 
-详细请见 `test/demo.cpp`.
+For more details, please see [demo](https://github.com/yanyiwu/cppjieba-demo).
 
 ### 词性标注
 
@@ -195,7 +190,7 @@ Query方法先使用Mix方法切词，对于切出来的较长的词再使用Ful
 ["我:r", "是:v", "拖拉机:n", "学院:n", "手扶拖拉机:n", "专业:n", "的:uj", "。:x", "不用:v", "多久:m", "，:x", "我:r", "就:d", "会:v", "升职:v", "加薪:nr", "，:x", "当上:t", "CEO:eng", "，:x", "走上:v", "人生:n", "巅峰:n", "。:x"]
 ```
 
-详细请看 `test/demo.cpp`.
+For more details, please see [demo](https://github.com/yanyiwu/cppjieba-demo).
 
 支持自定义词性。
 比如在(`dict/user.dict.utf8`)增加一行
@@ -214,70 +209,37 @@ Query方法先使用Mix方法切词，对于切出来的较长的词再使用Ful
 
 + [dict.367W.utf8] iLife(562193561 at qq.com)
 
-## 应用
+## 生态系统
 
-+ [GoJieba] go语言版本的结巴中文分词。
-+ [NodeJieba] Node.js 版本的结巴中文分词。
-+ [simhash] 中文文档的的相似度计算
-+ [exjieba] Erlang 版本的结巴中文分词。
-+ [jiebaR] R语言版本的结巴中文分词。
-+ [cjieba] C语言版本的结巴分词。
-+ [jieba_rb] Ruby 版本的结巴分词。
-+ [iosjieba] iOS 版本的结巴分词。
-+ [SqlJieba] MySQL 全文索引的结巴中文分词插件。
-+ [pg_jieba] PostgreSQL 数据库的分词插件。
-+ [gitbook-plugin-search-pro] 支持中文搜索的 gitbook 插件。
-+ [ngx_http_cppjieba_module] Nginx 分词插件。
-+ [cppjiebapy] 由 [jannson] 开发的供 python 模块调用的项目 [cppjiebapy], 相关讨论 [cppjiebapy_discussion] .
-+ [cppjieba-py] 由 [bung87] 基于 pybind11 封装的 python 模块,使用体验上接近于原jieba。
-+ [KeywordServer] 50行搭建一个中文关键词抽取服务。
-+ [cppjieba-server] CppJieba HTTP 服务器。
-+ [phpjieba] php版本的结巴分词扩展。
-+ [perl5-jieba] Perl版本的结巴分词扩展。
-+ [jieba-dlang] D 语言的结巴分词 Deimos Bindings。
+CppJieba 已经被广泛应用于各种编程语言的分词实现中：
 
-## 线上演示
+- [GoJieba](https://github.com/yanyiwu/gojieba) - Go 语言版本
+- [NodeJieba](https://github.com/yanyiwu/nodejieba) - Node.js 版本
+- [CJieba](https://github.com/yanyiwu/cjieba) - C 语言版本
+- [jiebaR](https://github.com/qinwf/jiebaR) - R 语言版本
+- [exjieba](https://github.com/falood/exjieba) - Erlang 版本
+- [jieba_rb](https://github.com/altkatz/jieba_rb) - Ruby 版本
+- [iosjieba](https://github.com/yanyiwu/iosjieba) - iOS 版本
+- [phpjieba](https://github.com/jonnywang/phpjieba) - PHP 版本
+- [perl5-jieba](https://metacpan.org/pod/distribution/Lingua-ZH-Jieba/lib/Lingua/ZH/Jieba.pod) - Perl 版本
 
-[Web-Demo](http://cppjieba-webdemo.herokuapp.com/)
-(建议使用chrome打开)
+### 应用项目
 
-## 性能评测
+- [simhash](https://github.com/yanyiwu/simhash) - 中文文档相似度计算
+- [pg_jieba](https://github.com/jaiminpan/pg_jieba) - PostgreSQL 分词插件
+- [gitbook-plugin-search-pro](https://plugins.gitbook.com/plugin/search-pro) - Gitbook 中文搜索插件
+- [ngx_http_cppjieba_module](https://github.com/yanyiwu/ngx_http_cppjieba_module) - Nginx 分词插件
 
-[Jieba中文分词系列性能评测]
+## 贡献指南
 
-## Contributors
+我们欢迎各种形式的贡献，包括但不限于：
 
-### Code Contributors
+- 提交问题和建议
+- 改进文档
+- 提交代码修复
+- 添加新功能
 
-This project exists thanks to all the people who contribute.
-<a href="https://github.com/yanyiwu/cppjieba/graphs/contributors"><img src="https://opencollective.com/cppjieba/contributors.svg?width=890&button=false" /></a>
 
-[GoJieba]:https://github.com/yanyiwu/gojieba
-[CppJieba]:https://github.com/yanyiwu/cppjieba
-[jannson]:https://github.com/jannson
-[cppjiebapy]:https://github.com/jannson/cppjiebapy
-[bung87]:https://github.com/bung87
-[cppjieba-py]:https://github.com/bung87/cppjieba-py
-[cppjiebapy_discussion]:https://github.com/yanyiwu/cppjieba/issues/1
-[NodeJieba]:https://github.com/yanyiwu/nodejieba
-[jiebaR]:https://github.com/qinwf/jiebaR
-[simhash]:https://github.com/yanyiwu/simhash
-[代码详解]:https://github.com/yanyiwu/cppjieba/wiki/CppJieba%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3
-[issue25]:https://github.com/yanyiwu/cppjieba/issues/25
-[exjieba]:https://github.com/falood/exjieba
-[KeywordServer]:https://github.com/yanyiwu/keyword_server
-[ngx_http_cppjieba_module]:https://github.com/yanyiwu/ngx_http_cppjieba_module
-[dict.367W.utf8]:https://github.com/qinwf/BigDict
-[cjieba]:http://github.com/yanyiwu/cjieba
-[jieba_rb]:https://github.com/altkatz/jieba_rb
-[iosjieba]:https://github.com/yanyiwu/iosjieba
-[SqlJieba]:https://github.com/yanyiwu/sqljieba
-[Jieba中文分词系列性能评测]:http://yanyiwu.com/work/2015/06/14/jieba-series-performance-test.html
-[pg_jieba]:https://github.com/jaiminpan/pg_jieba
-[gitbook-plugin-search-pro]:https://plugins.gitbook.com/plugin/search-pro
-[cppjieba-server]:https://github.com/yanyiwu/cppjieba-server
-[phpjieba]:https://github.com/jonnywang/phpjieba
-[perl5-jieba]:https://metacpan.org/pod/distribution/Lingua-ZH-Jieba/lib/Lingua/ZH/Jieba.pod
-[jieba-dlang]:https://github.com/shove70/jieba
+如果您觉得 CppJieba 对您有帮助，欢迎 star ⭐️ 支持项目！
 
 
